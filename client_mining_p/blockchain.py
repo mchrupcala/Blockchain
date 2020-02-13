@@ -134,33 +134,34 @@ def mine():
     data = request.get_json()
     print(data)
     
-    if data.proof is None:
+    if data['proof'] is None:
         response = "Proof is missing"
         return jsonify(response), 400
-    elif data.id is None:
+    elif data['id'] is None:
         response = "ID is missing"
         return jsonify(response), 400
-    # #condition if two senders send valid proofs
-    # elif 
     else :
+        print("Last block is: ", blockchain.last_block)
         block_string = json.dumps(blockchain.last_block, sort_keys=True)
-        proof = blockchain.valid_proof(block_string, data.proof)
-        # THIS WON'T WORK....I have to finish the client file too
-        if proof is True and blockchain.last_block.proof != data.proof:
+        proof = blockchain.valid_proof(block_string, data['proof'])
+        print("Proof is: ", data['proof'], block_string, proof, blockchain.last_block)
+        
+        if proof is True and blockchain.last_block['proof'] != data['proof']:
             print("Success!")
+
+            # # Forge the new Block by adding it to the chain with the proof
+            previous_hash = blockchain.hash(blockchain.last_block)
+            new_block = blockchain.new_block(data['proof'], previous_hash)
+            response = {
+                # TODO: Send a JSON response with the new block
+                "block": new_block
+            }
+            return jsonify(response), 200
         else:
-            print("Failure!")
+            return jsonify({"Error occured": 0}), 400
 
-        # # Forge the new Block by adding it to the chain with the proof
-        # previous_hash = blockchain.hash(blockchain.last_block)
-        # new_block = blockchain.new_block(data.proof, previous_hash)
 
-        response = {
-            # TODO: Send a JSON response with the new block
-            # "block": new_block
-            "Printed?"
-        }
-        return jsonify(response), 200
+
 
 
 @app.route('/chain', methods=['GET'])
