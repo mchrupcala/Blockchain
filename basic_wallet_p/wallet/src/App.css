@@ -1,0 +1,96 @@
+html {
+  background: #eb3a45;
+}
+
+.App, body, html {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background: #f7f7f7;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/******* WALLET ********/
+
+.wallet-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 0 auto;
+  /* display: flex;
+  justify-content: center; */
+}
+
+.wallet-img {
+  /* height: 100%;
+  width: 100%; */
+  /* position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  top: 50%;
+  margin-top: -50px; */
+}
+
+.wallet-form-container {
+  position:absolute;
+  left:50%;  
+  top:32%; /* adjust to suit */
+  width:auto;
+  white-space: nowrap;
+  -webkit-transform:translateX(-50%);
+  transform:translateX(-50%);
+  /* display:none; */
+  /* width: 40%;
+  position: relative;
+  left: -60%;
+  top: -40%;
+  z-index: 1; */
+  /* display: flex;
+  justify-content: center; */
+}
+
+label {
+  width: 120px;
+  margin: 0 30px;
+}
+
+label input {
+  height: 30px;
+  width: 200px;
+}
