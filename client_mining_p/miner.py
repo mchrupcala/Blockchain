@@ -49,7 +49,7 @@ if __name__ == '__main__':
     # Load ID
     f = open("my_id.txt", "r")
     id = f.read()
-    print("ID is", id)
+    # print("ID is", id)
     f.close()
 
     coins = 0
@@ -60,7 +60,7 @@ if __name__ == '__main__':
         # Handle non-json response
         try:
             data = r.json()
-            print("Data object on line 61: ", data)
+            # print("Data object on line 61: ", data)
         except ValueError:
             print("Error:  Non-json response")
             print("Response returned:")
@@ -68,15 +68,14 @@ if __name__ == '__main__':
             break
 
         # TODO: Get the block from `data` and use it to look for a new proof
-        print("Is block missing?", data['block'])
-        new_proof = proof_of_work(data['block'])
+        new_proof = proof_of_work(data['last_block'])
 
         # When found, POST it to the server {"proof": new_proof, "id": id}
         post_data = {"proof": new_proof, "id": id}
 
         r = requests.post(url=node + "/mine", json=post_data)
         data = r.json()
-        print("Response is: ", data)
+        # print("Response is: ", data)
         
         # TODO: If the server responds with a 'message' 'New Block Forged'
         # add 1 to the number of coins mined and print it.  Otherwise,

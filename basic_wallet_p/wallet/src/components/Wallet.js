@@ -1,12 +1,13 @@
 import React from 'react';
-import wallet from '../images/wallet_img.jpeg'
 
-const Wallet = () => {
+const Wallet = (props) => {
+    // console.log("rendered!")
     return (
-        <div>
-            <img className="wallet-img" src={wallet} alt="" />
-        </div>
-    )
+        <>
+        <h3>Current balance is: {props.balance} </h3>
+        {/* <div>{props.inte}</div> */}
+        </>
+      )
 }
 
 export default Wallet;
