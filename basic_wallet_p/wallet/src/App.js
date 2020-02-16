@@ -31,20 +31,6 @@ function App() {
 
   }
 
-  // const sendHandler = e => {
-  //   e.preventDefault();
-
-  // }
-
-  // const recipientHandler = e => {
-  //   e.preventDefault();
-
-  // }
-
-  // const amountHandler = e => {
-  //   e.preventDefault();
-  // }
-
   let checkIfSignedIn = null;
   
 //   useEffect(() => {
