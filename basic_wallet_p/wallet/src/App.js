@@ -14,25 +14,36 @@ function App() {
   const [inte, setInte] = useState(0);
   let balance = null;
 
-  const userHandler = e => {
+  const eventHandler = e => {
     e.preventDefault();
-    setUser(e.target.value)
+    if (e.target.name === "user") {
+      setUser(e.target.value)
+    } 
+    else if (e.target.name === 'sender') {
+      setSender(e.target.value)
+    }
+    else if (e.target.name === 'recipient') {
+      setRecipient(e.target.value)
+    } 
+    else if(e.target.name === 'amount') {
+      setAmount(e.target.value)
+    }
+
   }
 
-  const sendHandler = e => {
-    e.preventDefault();
-    setSender(e.target.value)
-  }
+  // const sendHandler = e => {
+  //   e.preventDefault();
 
-  const recipientHandler = e => {
-    e.preventDefault();
-    setRecipient(e.target.value)
-  }
+  // }
 
-  const amountHandler = e => {
-    e.preventDefault();
-    setAmount(e.target.value)
-  }
+  // const recipientHandler = e => {
+  //   e.preventDefault();
+
+  // }
+
+  // const amountHandler = e => {
+  //   e.preventDefault();
+  // }
 
   let checkIfSignedIn = null;
   
@@ -57,8 +68,6 @@ const walletHandler = e => {
   useEffect(() => {
     setInte(inte+1);
     // const callApi = () => {
-      console.log(blockchain);
-      console.log(userTx);
       axios
           .post('http://localhost:5000/transaction/new', userTx, userTx)
           .then(res => {
@@ -68,18 +77,14 @@ const walletHandler = e => {
             axios
             .get('http://localhost:5000/chain')
             .then(res => {
+              console.log(res.data.chain)
               setBlockchain(res.data.chain);
-              // console.log(res.data.chain);
               return res.data.chain
             })
             .then(res => {
-              // console.log(res);
               res.forEach(i => {
-                // console.log(i);
                 if (i.transactions != null) {
-                  // console.log(i);
                   i.transactions.forEach(j => {
-                    // console.log(j);
                     if (user === j.sender) {
                       balance -= j.amount
                     } 
@@ -92,7 +97,6 @@ const walletHandler = e => {
                   })
                 }
               })
-              console.log("Balance is: ", balance);
             })
             .catch(err => {
               console.log(err);
@@ -120,20 +124,20 @@ const walletHandler = e => {
             <h2>Welcome back, {user}!</h2>
             {checkIfSignedIn}
           <form>
-          <label>User: 
-              <input type="text" name="user" value={user} onChange={userHandler}></input>
+            <label>User: 
+              <input type="text" name="user" value={user} onChange={eventHandler}></input>
             </label>
 
             <label>Sender: 
-              <input type="text" name="sender" value={sender} onChange={sendHandler}></input>
+              <input type="text" name="sender" value={sender} onChange={eventHandler}></input>
             </label>
 
               <label>Receiver: 
-              <input type="text" name="recipient" value={recipient} onChange={recipientHandler}></input>
+              <input type="text" name="recipient" value={recipient} onChange={eventHandler}></input>
             </label>
 
             <label>Amount: 
-            <input type="text" name="amount" value={amount} onChange={amountHandler}></input>
+            <input type="text" name="amount" value={amount} onChange={eventHandler}></input>
             </label>
 
             <button onClick={walletHandler}>Send Coins</button>
