@@ -1,0 +1,25 @@
+Blockchain:  [
+    {'index': 1, 
+    'timestamp': 1581884311.5605261, 
+    'transactions': [], 
+    'proof': 100, 
+    'previous_hash': 'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks.'}, 
+
+    {'index': 2, 
+    'timestamp': 1581884311.560531, 
+    'transactions': [
+        {'sender': 'Satoshi', 'recipient': 'Mike', 'amount': '5 BTC'}, 
+        {'sender': 'Mike', 'recipient': 'Satoshi', 'amount': '1 BTC'}, 
+        {'sender': 'Satoshi', 'recipient': 'Hal Finney', 'amount': '5 BTC'}],
+    'proof': 12345, 
+    'previous_hash': '7867749d48c94de2ac661c119b3d3201d34c0bf4462fb006250354d32fce1349'}, 
+
+    {'index': 3, 
+    'timestamp': 1581884311.560585, 
+    'transactions': [
+        {'sender': 'Mike', 'recipient': 'Alice', 'amount': '1 BTC'}, 
+        {'sender': 'Alice', 'recipient': 'Bob', 'amount': '0.5 BTC'}, 
+        {'sender': 'Bob', 'recipient': 'Mike', 'amount': '0.5 BTC'}], 
+    'proof': 6789, 
+    'previous_hash': '69d2763ebee223276b1106d6b20acc30358835e0f113ca2fe078b86583eb1317'}
+    ]
