@@ -53,36 +53,20 @@ html {
   height: 100%;
   position: relative;
   margin: 0 auto;
-  /* display: flex;
-  justify-content: center; */
 }
 
 .wallet-img {
-  /* height: 100%;
-  width: 100%; */
-  /* position: absolute;
-  left: 50%;
-  margin-left: -50px;
-  top: 50%;
-  margin-top: -50px; */
+
 }
 
 .wallet-form-container {
   position:absolute;
   left:50%;  
-  top:32%; /* adjust to suit */
+  top:32%;
   width:auto;
   white-space: nowrap;
   -webkit-transform:translateX(-50%);
   transform:translateX(-50%);
-  /* display:none; */
-  /* width: 40%;
-  position: relative;
-  left: -60%;
-  top: -40%;
-  z-index: 1; */
-  /* display: flex;
-  justify-content: center; */
 }
 
 label {
